@@ -24,7 +24,3 @@ jobs:
       sqGradlePluginVersionChoice: 'specify'
       sonarQubeGradlePluginVersion: '3.5.0.2730'
       spotBugsAnalysis: false
-
-- job:
-  steps:
-    - script: echo hola
