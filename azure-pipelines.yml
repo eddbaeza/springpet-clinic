@@ -1,6 +1,7 @@
 jobs:
 - job:
-  pool: 'ubuntu-latest'
+  pool:
+    vmImage: 'ubuntu-latest'
   displayName: Build
 
   steps:
