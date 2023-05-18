@@ -2,6 +2,7 @@ plugins {
   id 'org.springframework.boot' version '2.6.6'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
+  id 'jacoco'
 }
 
 apply plugin: 'java'
@@ -34,6 +35,14 @@ dependencies {
   runtimeOnly 'org.postgresql:postgresql'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jacocoTestReport {
+  dependsOn test
+	reports {
+		html.enabled true
+		xml.enabled true
+	}
 }
 
 test {
