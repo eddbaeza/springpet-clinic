@@ -60,4 +60,12 @@ jobs:
       repository: 'clagosu/spring-clinic'
       command: 'push'
   
-  
+- job: 
+  pool: 'Default'
+  steps:
+  - task: Kubernetes@1
+    inputs:
+      connectionType: 'None'
+      command: 'apply'
+      arguments: '-f deployment-app.yaml'
+      
