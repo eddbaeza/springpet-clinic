@@ -68,4 +68,20 @@ jobs:
       connectionType: 'None'
       command: 'apply'
       arguments: '-f deployment-app.yaml'
+  
+  - script: kubectl port-forward deploy/petclinic-deployment 8086:8085
+
+  - task: TaurusRunner@0
+    inputs:
+      taurusConfig: |
+        execution:
+         - scenario:
+             requests:
+              script: petclinic.jmx
+      jmeterHome: 'C:\Users\clago\Downloads\apache-jmeter-5.5\apache-jmeter-5.5'
+      jmeterPath: 'C:\Users\clago\Downloads\apache-jmeter-5.5\apache-jmeter-5.5\bin'
+      jmeterVersion: '5.5'
+      outputDir: 'taurus-output'
+  
+  - script: jmeter -n -t $(System.DefaultWorkingDirectory)/jmeter/test-plan.jmx -l $(System.DefaultWorkingDirectory)/resultados.jtl
       
